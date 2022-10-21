@@ -8,12 +8,12 @@ Bureaucrat::Bureaucrat()
 
 //Any attempt to instantiate a Bureaucrat using an invalid grade,
 //must throw an exception.
-Bureaucrat::Bureaucrat(const std::string name, int grade) 
+Bureaucrat::Bureaucrat(std::string name, int grade) 
 	: mName(name), mGrade(grade) {
 	std::cout << "Bureaucrat: My Constructor called" << std::endl;
-	if (grade < GRADE_MAX)
+	if (mGrade < GRADE_MAX)
 		throw GradeTooHighException();
-	if (grade > GRADE_MIN)
+	if (mGrade > GRADE_MIN)
 		throw GradeTooLowException();
 }
 
@@ -35,7 +35,7 @@ Bureaucrat::~Bureaucrat() {
 		std::cout << "Bureaucrat: Destructor called" << std::endl;
 }
 
-const std::string Bureaucrat::getName() const {
+std::string Bureaucrat::getName() const {
 	return mName;
 }
 int Bureaucrat::getGrade() const {
