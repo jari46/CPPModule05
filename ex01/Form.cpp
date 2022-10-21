@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() 
 	: mSigned(false), mGradeRequiredToSign(1), mGradeRequiredToExecute(1) {
@@ -76,5 +76,5 @@ const char* Form::GradeTooHighException::what() const throw() {
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return "the grade is too low!";
+	return "therade is too low!";
 }

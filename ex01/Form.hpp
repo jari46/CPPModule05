@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <exception>
-#include "Bureaucrat.hpp"
 
 #define GRADE_MAX 1
 #define GRADE_MIN 150
