@@ -8,8 +8,8 @@ int main() {
 			Bureaucrat dobi("dobi", 2);
 			std::cout << "* before: " << dobi;
 			try {
-					for (int i = 0; i < 2; ++i)
-						dobi.incrementingGrade();
+				for (int i = 0; i < 1; ++i)
+					dobi.incrementingGrade();
 			} catch (Bureaucrat::GradeTooHighException& e) {
 				std::cout << "CATCH: " << e.what() << std::endl;
 			}

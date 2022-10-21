@@ -65,11 +65,9 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat const &b) {
 void Bureaucrat::signForm(Form &form) {
 	try {
 		form.beSigned(*this);
-		std::cout << " * SUCCESS: " << mName << " to " << form.getName() << " form" << std::endl;
-	} catch (Form::GradeTooHighException &e) {
-		std::cout << " * FAIL: " << mName << " to " << form.getName() << " form, because the grade is too high" << std::endl;
-	} catch (Form::GradeTooLowException &e) {
-		std::cout << " * FAIL: " << mName << " to " << form.getName() << " form, because the grade is too low" << std::endl;
+		std::cout << mName << " to " << form.getName() << " form SUCCESS."<< std::endl;
+	} catch (std::exception &e) {
+		std::cout << mName << " to " << form.getName() << " form  FAIL. because " << e.what() << std::endl;
 	}
 }
 

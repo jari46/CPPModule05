@@ -12,13 +12,9 @@ Form::Form()
 Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExecute) 
 	: mName(name), mSigned(false), mGradeRequiredToSign(gradeRequiredToSign), mGradeRequiredToExecute(gradeRequiredToExecute) {
 	std::cout << "Form: My Constructor called" << std::endl;
-	if (mGradeRequiredToSign < GRADE_MAX)
+	if (mGradeRequiredToSign < GRADE_MAX || mGradeRequiredToExecute < GRADE_MAX)
 		throw GradeTooHighException();
-	if (mGradeRequiredToSign > GRADE_MIN)
-		throw GradeTooLowException();
-	if (mGradeRequiredToExecute < GRADE_MAX)
-		throw GradeTooHighException();
-	if (mGradeRequiredToExecute > GRADE_MIN)
+	if (mGradeRequiredToSign > GRADE_MIN || mGradeRequiredToExecute > GRADE_MIN)
 		throw GradeTooLowException();
 }
 
@@ -76,9 +72,9 @@ std::ostream &operator<<(std::ostream &os, Form const &b) {
 //--------------------------------------------------------//
 
 const char* Form::GradeTooHighException::what() const throw() {
-	return "Grade is too high!";
+	return "the grade is too high!";
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return "Grade is too low!";
+	return "the grade is too low!";
 }

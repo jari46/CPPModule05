@@ -47,8 +47,8 @@ int main() {
 		Form hardForm("hard", 1, 1);
 		Form easyForm("easy", 100, 100);
 
-		std::cout << "TRY HARD: "; dobi.signForm(hardForm);
-		std::cout << "TRY EASY: "; dobi.signForm(easyForm);
+		std::cout << "TRY HARD => "; dobi.signForm(hardForm);
+		std::cout << "TRY EASY => "; dobi.signForm(easyForm);
 
 	}
 }
