@@ -15,7 +15,7 @@ Intern& Intern::operator=(const Intern& src) {
 
 Intern::~Intern() {}
 
-static int nameToInt(const std::string& name) {
+int Intern::nameToInt(const std::string& name) const {
   std::string formNames[3] = \
     {SHRUB_FORM_NAME, ROBO_FORM_NAME, PARDON_FORM_NAME};
 
@@ -23,24 +23,28 @@ static int nameToInt(const std::string& name) {
     if (name == formNames[i])
       return i;
   }
-  return -1;
+  throw NoMatchingTypeException();
 }
 
 Form* Intern::makeForm(const std::string& name, const std::string& target) {
-  switch (nameToInt(name)) {
-    case SHRUB_REQUEST :
-      return new ShrubberyCreationForm(target);
-      break ;
-    case ROBO_REQUEST :
-      return new RobotomyRequestForm(target);
-      break ;
-    case PARDON_REQUEST :
-      return new PresidentialPardonForm(target);
-      break ;
-    default :
-      std::cout << "no such form..." << std::endl;
-      return NULL;
-  }
+	Form* (*makeFormFunctions[3])(const std::string& target) = {
+                      makeShrubberyCreationForm, \
+                      makeRobotomyRequestForm, \
+                      makePresidentialPardonForm};
+
+  return (*makeFormFunctions[nameToInt(name)])(target);
+}
+
+Form* Intern::makeShrubberyCreationForm(const std::string& target) {
+  return new ShrubberyCreationForm(target);
+}
+
+Form* Intern::makeRobotomyRequestForm(const std::string& target) {
+  return new RobotomyRequestForm(target);
+}
+
+Form* Intern::makePresidentialPardonForm(const std::string& target) {
+  return new PresidentialPardonForm(target);
 }
 
 const char* Intern::NoMatchingTypeException::what(void) const throw() {

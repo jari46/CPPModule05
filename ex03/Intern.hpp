@@ -3,30 +3,29 @@
 
 #include <string>
 
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
-
-enum request {
-  SHRUB_REQUEST,
-  ROBO_REQUEST,
-  PARDON_REQUEST,
-  WRONG_REQUEST,
-};
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 class Intern {
- public:
-  Intern();
-  Intern(const Intern& src);
-  Intern& operator=(const Intern& src);
-  ~Intern();
+  private:
+    int nameToInt(const std::string& name) const;
+    static Form* makeShrubberyCreationForm(const std::string& target);
+    static Form* makeRobotomyRequestForm(const std::string& target);
+    static Form* makePresidentialPardonForm(const std::string& target);
 
-  Form* makeForm(const std::string& name, const std::string& target);
+  public:
+    Intern();
+    Intern(const Intern& src);
+    Intern& operator=(const Intern& src);
+    ~Intern();
 
-  class NoMatchingTypeException : public std::exception {
-   public:
-      const char* what(void) const throw();
-  };
+    Form* makeForm(const std::string& name, const std::string& target);
+
+    class NoMatchingTypeException : public std::exception {
+      public:
+          const char* what(void) const throw();
+    };
 };
 
 #endif  // INTERN_HPP
