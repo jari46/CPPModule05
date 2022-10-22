@@ -70,6 +70,7 @@ void Bureaucrat::signForm(Form &form) {
 	}
 }
 
+//attempt to execute the form
 void Bureaucrat::executeForm(const Form &form) const {
 	try {
 		form.execute(*this);

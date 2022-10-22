@@ -1,7 +1,7 @@
 NAME			:= At-least-this-beats-coffee-making
 
 CXX				:= c++
-CXXFLAGS		:= -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS		:= -Wall -Wextra -Werror -std=c++98  
 RM				:= rm -f
 
 SRCS	:= \

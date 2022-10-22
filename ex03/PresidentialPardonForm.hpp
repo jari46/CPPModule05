@@ -16,7 +16,7 @@ class PresidentialPardonForm : public Form {
   PresidentialPardonForm(const PresidentialPardonForm& src);
   virtual ~PresidentialPardonForm();
   
-  virtual void execute(const Bureaucrat& b) const;/* added */
+  virtual void  execute(const Bureaucrat& executor) const;/* added */
 };
 
 #endif  // PRESIDENTIAL_PARDON_FORM_HPP

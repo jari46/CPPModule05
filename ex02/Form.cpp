@@ -28,9 +28,10 @@ Form::Form(const std::string& name, const int gradeRequiredToSign, const int gra
 }
 
 Form::Form(const Form& src) 
-	: mGradeRequiredToSign(1), mGradeRequiredToExecute(1) {
+	: mName(src.getName()), mSigned(src.getSigned()), \
+	mGradeRequiredToSign(src.getGradeRequiredToSign()), \
+	mGradeRequiredToExecute(src.getGradeRequiredToExecute()) {
 	//std::cout << "Form: Copy constructor called" << std::endl;
-	(*this) = src;
 }
 
 //recommend to not use
@@ -68,6 +69,11 @@ int Form::getGradeRequiredToExecute() const {
 std::string Form::getTarget() const {
 	return mTarget;
 }
+
+void Form::setSigned(int sign) {
+	mSigned = sign;
+}
+
 //--------------------------------------------------------//
 
 void Form::beSigned(const Bureaucrat &b) {
@@ -77,6 +83,10 @@ void Form::beSigned(const Bureaucrat &b) {
 		mSigned = true;
 }
 
+//have to check that the form is signed 
+//and that the grade of the bureaucrat attempting to execute the form 
+//is high enough. 
+//Otherwise, throw an appropriate exception.
 void Form::checkExecutable(const Bureaucrat &b) const {
 	if (mSigned == false)
 		throw (NotSignedException());

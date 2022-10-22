@@ -16,7 +16,7 @@ class ShrubberyCreationForm : public Form {
   ShrubberyCreationForm& operator=(const ShrubberyCreationForm& src);
   virtual ~ShrubberyCreationForm();
   
-  virtual void execute(const Bureaucrat& b) const;/* added */
+  virtual void  execute(const Bureaucrat& executor) const;/* added */
 
   class NotOpenedException : public std::exception {/* added */
   public:

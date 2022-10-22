@@ -27,6 +27,7 @@ class Bureaucrat {
 		void incrementingGrade();
 		void decrementingGrade();
 
+		//If the form got signed, it will print something
 		void signForm(Form &form);/* added */
 
 		class GradeTooHighException : public std::exception {

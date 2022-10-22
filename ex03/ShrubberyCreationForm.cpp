@@ -10,13 +10,12 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
   : Form(SHRUB_FORM_NAME, SHRUB_FORM_SIGN, SHRUB_FORM_EXEC, src.getTarget()) {
-    *this = src;
   }
 
 //recommend to not use
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src) {
 	if (this != &src) {
-		mSigned = src.mSigned;
+		setSigned(src.getSigned());
 		//other attribute is all constant.
 	}
 	return *this;
@@ -26,11 +25,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {}
 
 //-------------------------------------------------------------------//
 
-void ShrubberyCreationForm::execute(const Bureaucrat& b) const {
-  checkExecutable(b);
+void ShrubberyCreationForm:: execute(const Bureaucrat& executor) const {
+  checkExecutable(executor);
   //Otherwise, throw an appropriate exception.
 
-  std::ofstream out(mTarget + "_shrubbery");
+  std::ofstream out(getTarget() + "_shrubbery");
   if (!out.good())
     throw NotOpenedException();
   std::string shrubbery = "               ,@@@@@@@,\n"

@@ -19,16 +19,17 @@ Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExecute
 }
 
 Form::Form(const Form& src) 
-	: mGradeRequiredToSign(1), mGradeRequiredToExecute(1) {
+	: mName(src.getName()), mSigned(src.getSigned()), \
+	mGradeRequiredToSign(src.getGradeRequiredToSign()), \
+	mGradeRequiredToExecute(src.getGradeRequiredToExecute()) {
 	//std::cout << "Form: Copy constructor called" << std::endl;
-	(*this) = src;
 }
 
 //recommend to not use
 Form& Form::operator=(const Form& src) {
 	//std::cout << "Form: Copy assignment operator called" << std::endl;
 	if (this != &src) {
-		mSigned = src.mSigned;
+		setSigned(src.getSigned());
 		//other attribute is all constant.
 	}
 	return *this;
@@ -52,6 +53,10 @@ int Form::getGradeRequiredToSign() const {
 
 int Form::getGradeRequiredToExecute() const {
 	return mGradeRequiredToExecute;
+}
+
+void Form::setSigned(int sign) {
+	mSigned = sign;
 }
 
 void Form::beSigned(const Bureaucrat &b) {

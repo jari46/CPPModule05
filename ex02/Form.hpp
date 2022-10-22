@@ -11,7 +11,7 @@
 class Bureaucrat;
 
 class Form {
-	protected:
+	private:
 		const std::string mName;
 		bool mSigned;
 		const int mGradeRequiredToSign;
@@ -32,9 +32,11 @@ class Form {
 		int getGradeRequiredToExecute() const;
 		std::string getTarget() const;
 
+		void setSigned(int sign);
+
 		void beSigned(const Bureaucrat &b);
 		void checkExecutable(const Bureaucrat &b) const;/* added */
-  	virtual void execute(const Bureaucrat& b) const = 0;/* added */
+  	virtual void execute(const Bureaucrat& executor) const = 0;/* added */
 
 		class GradeTooHighException : public std::exception {
 			public:

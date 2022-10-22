@@ -6,11 +6,12 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Bureaucrat: Default Constructor called" << std::endl;
 }
 
-//Any attempt to instantiate a Bureaucrat using an invalid grade,
-//must throw an exception.
 Bureaucrat::Bureaucrat(std::string name, int grade) 
 	: mName(name), mGrade(grade) {
 	std::cout << "Bureaucrat: My Constructor called" << std::endl;
+
+	//Any attempt to instantiate a Bureaucrat using an invalid grade,
+	//must throw an exception.
 	if (mGrade < GRADE_MAX)
 		throw GradeTooHighException();
 	if (mGrade > GRADE_MIN)
@@ -42,7 +43,7 @@ int Bureaucrat::getGrade() const {
 	return mGrade;
 }
 
-//If the grade is out of range, both of them will throw exceptions.
+//If the grade is out of range, it will throw exceptions.
 void Bureaucrat::incrementingGrade() {
 	if (mGrade - 1 < GRADE_MAX)
 		throw GradeTooHighException();
@@ -50,6 +51,7 @@ void Bureaucrat::incrementingGrade() {
 		--mGrade;
 }
 
+//If the grade is out of range, it will throw exceptions.
 void Bureaucrat::decrementingGrade() {
 	if (mGrade + 1 > GRADE_MIN)
 		throw GradeTooLowException();

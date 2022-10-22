@@ -16,7 +16,7 @@ class RobotomyRequestForm : public Form {
   RobotomyRequestForm(const RobotomyRequestForm& src);
   virtual ~RobotomyRequestForm();
   
-  virtual void execute(const Bureaucrat& b) const;/* added */\
+  virtual void  execute(const Bureaucrat& executor) const;/* added */\
 };
 
 #endif  // ROBOTOMY_REQUEST_FORM_HPP

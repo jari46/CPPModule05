@@ -31,19 +31,26 @@ Form* Intern::makeForm(const std::string& name, const std::string& target) {
                       makeShrubberyCreationForm, \
                       makeRobotomyRequestForm, \
                       makePresidentialPardonForm};
-
-  return (*makeFormFunctions[nameToInt(name)])(target);
+  try {
+    return (*makeFormFunctions[nameToInt(name)])(target);
+  } catch (const NoMatchingTypeException &e) {
+    std::cout << "Why make form failed: " << e.what() << std::endl;
+    return NULL;
+  }
 }
 
 Form* Intern::makeShrubberyCreationForm(const std::string& target) {
+  std::cout << "Intern create Shrubbery Creation Form" << std::endl;
   return new ShrubberyCreationForm(target);
 }
 
 Form* Intern::makeRobotomyRequestForm(const std::string& target) {
+  std::cout << "Intern create Robotomy Request Form" << std::endl;
   return new RobotomyRequestForm(target);
 }
 
 Form* Intern::makePresidentialPardonForm(const std::string& target) {
+  std::cout << "Intern create Presidential Pardon Form" << std::endl;
   return new PresidentialPardonForm(target);
 }
 

@@ -15,6 +15,7 @@ class Form {
 		bool mSigned;//default: false
 		const int mGradeRequiredToSign;
 		const int mGradeRequiredToExecute;
+		// All these attributes are private, not protected.
 
 	public:
 		Form();
@@ -27,6 +28,8 @@ class Form {
 		bool getSigned() const;
 		int getGradeRequiredToSign() const;
 		int getGradeRequiredToExecute() const;
+
+		void setSigned(int sign);
 
 		//changes the form status to signed if the bureaucrat’s grade is high enough 
 		//(higher or egal to the required one)
@@ -44,6 +47,7 @@ class Form {
 		};
 };
 
+//prints all the form’s informations.
 std::ostream &operator<<(std::ostream &os, Form const &b);
 
 #endif // FORM_HPP

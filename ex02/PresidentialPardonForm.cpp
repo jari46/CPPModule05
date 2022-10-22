@@ -9,13 +9,12 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src)
   : Form(PARDON_FORM_NAME, PARDON_FORM_SIGN, PARDON_FORM_EXEC, src.getTarget()) {
-    *this = src;
   }
 
 //recommend to not use
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm& src) {
 	if (this != &src) {
-		mSigned = src.mSigned;
+		setSigned(src.getSigned());
 		//other attribute is all constant.
 	}
 	return *this;
@@ -25,9 +24,9 @@ PresidentialPardonForm::~PresidentialPardonForm(void) {}
 
 //-------------------------------------------------------------------//
 
-void PresidentialPardonForm::execute(const Bureaucrat &b) const {
-  checkExecutable(b);
+void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
+  checkExecutable(executor);
   //Otherwise, throw an appropriate exception.
 
-  std::cout << "    * " << mTarget << " has been pardoned by Zaphod Beeblebrox!" << std::endl;
+  std::cout << "    * " << getTarget() << " has been pardoned by Zaphod Beeblebrox!" << std::endl;
 }

@@ -1,7 +1,7 @@
 NAME			:= No-you-need-form-28B-not-28C...
 
 CXX				:= c++
-CXXFLAGS		:= -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS		:= -Wall -Wextra -Werror -std=c++98  
 RM				:= rm -f
 
 SRCS	:= \

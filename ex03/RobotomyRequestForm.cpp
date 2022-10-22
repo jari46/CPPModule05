@@ -9,13 +9,12 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src)
   : Form(ROBO_FORM_NAME, ROBO_FORM_SIGN, ROBO_FORM_EXEC, src.getTarget()) {
-    *this = src;
   }
 
 //recommend to not use
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& src) {
 	if (this != &src) {
-		mSigned = src.mSigned;
+		setSigned(src.getSigned());
 		//other attribute is all constant.
 	}
 	return *this;
@@ -25,15 +24,15 @@ RobotomyRequestForm::~RobotomyRequestForm(void) {}
 
 //-------------------------------------------------------------------//
 
-void RobotomyRequestForm::execute(const Bureaucrat &b) const {
-  checkExecutable(b);
+void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
+  checkExecutable(executor);
   //Otherwise, throw an appropriate exception.
   
   std::cout << "drrrrrrrrrrrrrrr..." << std::endl;
   bool isSuccessed = std::rand() / 2;
   if (isSuccessed) {
-    std::cout << "    * " << mTarget << " became robot!" << std::endl;
+    std::cout << "    * " << getTarget() << " became robot!" << std::endl;
   } else {
-    std::cout << "    * " << mTarget << " failed to become robot..." << std::endl;
+    std::cout << "    * " << getTarget() << " failed to become robot..." << std::endl;
   }
 }

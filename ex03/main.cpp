@@ -11,7 +11,6 @@
 	P.F. for PresidentialPardonForm */
 
 int main() {
-	try {
 		Intern stranger;
 
 		Form *shrubForm = stranger.makeForm("S.F.", "CLUSTER");
@@ -30,10 +29,5 @@ int main() {
 		dobi.signForm(*pardonForm);
 		king.executeForm(*pardonForm);
 
-		Form *wrongForm = stranger.makeForm("F.F.", "HIHI");/* throw exception */
-		dobi.signForm(*wrongForm);/* not working */
-		king.executeForm(*wrongForm);/* not working */
-	} catch (const std::exception &e) {
-    std::cout << "Why main() failed: " << e.what() << std::endl;
-  }
+		stranger.makeForm("F.F.", "HIHI");
 }
