@@ -11,7 +11,7 @@
 class PresidentialPardonForm : public Form {
  public:
   PresidentialPardonForm();
-  explicit PresidentialPardonForm(const std::string& target);/* added */
+  PresidentialPardonForm(const std::string& target);/* added */
   PresidentialPardonForm& operator=(const PresidentialPardonForm& src);
   PresidentialPardonForm(const PresidentialPardonForm& src);
   virtual ~PresidentialPardonForm();

@@ -81,5 +81,5 @@ const char* Form::GradeTooHighException::what() const throw() {
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return "therade is too low!";
+	return "the grade is too low!";
 }

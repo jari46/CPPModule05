@@ -81,7 +81,6 @@ void Bureaucrat::executeForm(const Form &form) const {
 	}
 }
 
-
 //--------------------------------------------------------//
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {

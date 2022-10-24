@@ -19,7 +19,7 @@ int main() {
 
 		Bureaucrat dobi("DOBI", 25);
 		Bureaucrat king("KING", 2);
-		
+	
 		dobi.signForm(*shrubForm);
 		king.executeForm(*shrubForm);
 
@@ -30,4 +30,8 @@ int main() {
 		king.executeForm(*pardonForm);
 
 		stranger.makeForm("F.F.", "HIHI");
+
+		delete shrubForm;
+		delete roboForm;
+		delete pardonForm;
 }

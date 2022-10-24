@@ -11,7 +11,7 @@
 class RobotomyRequestForm : public Form {
  public:
   RobotomyRequestForm();
-  explicit RobotomyRequestForm(const std::string& target);/* added */
+  RobotomyRequestForm(const std::string& target);/* added */
   RobotomyRequestForm& operator=(const RobotomyRequestForm& src);
   RobotomyRequestForm(const RobotomyRequestForm& src);
   virtual ~RobotomyRequestForm();
